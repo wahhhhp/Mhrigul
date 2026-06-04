@@ -1410,6 +1410,45 @@ document.addEventListener('DOMContentLoaded', function() {
       const view = this.getAttribute('data-view');
       if (view && !this.classList.contains('locked')) {
         switchView(view);
+      } else if (this.classList.contains('locked')) {
+        var card = this;
+        // 抖动效果
+        card.style.animation = 'none';
+        void card.offsetWidth;
+        card.style.animation = 'cardShake 0.4s ease';
+        setTimeout(function() { card.style.animation = ''; }, 500);
+        
+        // 随机表情飞出
+        var emojis = ['\ud83d\ude02','\ud83d\ude06','\ud83e\udd23','\ud83d\ude2d','\ud83d\ude33','\ud83e\udd14','\ud83d\udca4','\u2728','\ud83d\udc4a','\ud83e\udd2f','\ud83d\udca5','\ud83d\udd25'];
+        var rect = card.getBoundingClientRect();
+        for (var ei = 0; ei < 8; ei++) {
+          var em = document.createElement('div');
+          em.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          em.style.cssText = 'position:fixed;left:' + (rect.left + Math.random() * rect.width) + 'px;top:' + (rect.top + Math.random() * 20) + 'px;font-size:' + (18 + Math.random() * 18) + 'px;z-index:9999;pointer-events:none;transition:all ' + (0.6 + Math.random() * 0.4) + 's cubic-bezier(0.25,0.46,0.45,0.94);opacity:1;';
+          document.body.appendChild(em);
+          setTimeout(function(el) {
+            el.style.transform = 'translateY(' + (-80 - Math.random() * 120) + 'px) translateX(' + (-40 + Math.random() * 80) + 'px)';
+            el.style.opacity = '0';
+          }, 10, em);
+          setTimeout(function(el) { el.remove(); }, 1200, em);
+        }
+        
+        // 气泡提示
+        var msgs = ['\u8fd8\u6ca1\u505a\u597d\u5462~ \ud83d\ude06','\u518d\u7b49\u7b49\u54e6 \u2764','\u52aa\u529b\u4e2d... \ud83d\udcaa','\u5373\u5c06\u767b\u573a \u2728','\u522b\u6025\u522b\u6025 \ud83d\ude02','\u4eb2\u7231\u7684oumakjnm~\u5b9d\u5b9d~\u6765\u65e5\u65b9\u957f\u597d\u5417~~'];
+        var tip = document.createElement('div');
+        tip.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+        tip.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.6);background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);color:#fff;padding:18px 30px;border-radius:16px;font-size:18px;z-index:9999;pointer-events:none;opacity:0;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 8px 32px rgba(0,0,0,0.3);';
+        document.body.appendChild(tip);
+        setTimeout(function() {
+          tip.style.opacity = '1';
+          tip.style.transform = 'translate(-50%,-50%) scale(1)';
+        }, 50);
+        setTimeout(function() {
+          tip.style.transition = 'all 0.4s ease';
+          tip.style.opacity = '0';
+          tip.style.transform = 'translate(-50%,-60%) scale(0.6)';
+          setTimeout(function() { tip.remove(); }, 500);
+        }, 1800);
       }
     });
   });
