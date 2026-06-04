@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mihrigl</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- 登录页 -->
@@ -26,9 +26,9 @@
     </div>
     <div class="dir-grid">
       <a class="dir-card fu d1" data-view="valentine">
-        <div class="card-icon">💌</div>
+        <div class="card-icon">💕</div>
         <div class="card-body">
-          <div class="card-title">情人节快乐</div>
+          <div class="card-title">在一起1000天</div>
           <div class="card-desc">给你的专属礼物</div>
         </div>
         <div class="card-arrow">›</div>
@@ -61,7 +61,7 @@
     <p class="dir-footer">Made with ❤️ for Mihrigl <span style="font-size:12px;color:#ccc;margin-left:16px;cursor:pointer" id="logoutBtn" onclick="doLogout()">[退出]</span></p>
   </div>
 
-  <!-- 情人节页 - 双层结构 -->
+  <!-- 纪念日页 - 双层结构 -->
   <div class="view" id="view-valentine">
     <!-- 背景飘浮爱心粒子 -->
     <div class="floating-hearts" id="floatingHearts"></div>
@@ -83,7 +83,7 @@
     
     <div class="hero">
       <p class="tag">2026.02.14</p>
-      <h1>情人节快乐，<span>我的宝贝</span></h1>
+      <h1>在一起1000天，<span>我的宝贝</span></h1>
       <p>按住那颗心，我有话对你说</p>
     </div>
     
@@ -132,7 +132,7 @@
               </div>
             </div>
             <p class="day-h">距离第一次见面已经过去了</p>
-            <p class="day-summary">这是我们的第 <span id="valentineNum">1</span> 个情人节</p>
+            <p class="day-summary">这是我们的第 <span id="valentineNum">1</span> 年纪念日</p>
           </div>
         </div>
         
@@ -231,7 +231,7 @@ const SECRETS = {
   520: "你点击了520次！我爱你❤️",
   1314: "一生一世，永远在一起❤️",
   999: "长长久久，永不分离❤️",
-  2026: "2026年情人节快乐，我的宝贝❤️"
+  2026: "1000天纪念日快乐，我的宝贝❤️"
 };
 
 // DOM元素引用
@@ -1273,7 +1273,7 @@ function updateTimer() {
   document.getElementById("minNum").textContent = String(mins).padStart(2, '0');
   document.getElementById("secNum").textContent = String(secs).padStart(2, '0');
   
-  // 计算情人节数量
+  // 计算纪念日
   const currentYear = now.getFullYear();
   const valentineThisYear = new Date(currentYear, 1, 14);
   let valentineCount = currentYear - START_DATE.getFullYear();
