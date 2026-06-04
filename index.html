@@ -1717,21 +1717,6 @@ function createHeartBurst(cx, cy) {
 
 
 // 你我胶囊切换函数（全局，确保按钮 onclick 可用）
-var nijiaVideoIndex = 1;
-var nijiaTotalVideos = 7;
-
-
-var nijiaVideoIndex = 1;
-var nijiaTotalVideos = 7;
-var video = document.getElementById('nijia-player');
-  if (video) {
-    video.src = '\u80f6\u56ca/\u4f60\u6211/' + nijiaVideoIndex + '.MOV';
-    video.load();
-    video.play();
-  }
-  var counter = document.getElementById('nijiaCounter');
-  if (counter) counter.textContent = nijiaVideoIndex + ' / ' + nijiaTotalVideos;
-}
 
 function showPhotoReveal() {
   var overlay = document.getElementById('photoReveal');
